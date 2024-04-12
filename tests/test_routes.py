@@ -22,9 +22,11 @@ BASE_URL = "/accounts"
 
 HTTPS_ENVIRON = {'wsgi.url_scheme': 'https'}
 
+
 ######################################################################
 #  T E S T   C A S E S
 ######################################################################
+
 class TestAccountService(TestCase):
     """Account Service Tests"""
 
@@ -53,6 +55,7 @@ class TestAccountService(TestCase):
         """Runs once after each test case"""
         db.session.remove()
 
+
     ######################################################################
     #  H E L P E R   M E T H O D S
     ######################################################################
@@ -72,6 +75,7 @@ class TestAccountService(TestCase):
             account.id = new_account["id"]
             accounts.append(account)
         return accounts
+
 
     ######################################################################
     #  A C C O U N T   T E S T   C A S E S
@@ -174,7 +178,7 @@ class TestAccountService(TestCase):
     def test_method_not_allowed(self):
         """It should not allow an illegal method call"""
         resp = self.client.delete(BASE_URL)
-        self.assertEqual(resp.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)    
+        self.assertEqual(resp.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
     def test_security_headers(self):
         """It should return security headers"""
